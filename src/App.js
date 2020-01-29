@@ -161,7 +161,8 @@ class MyGallery extends Component {
      totalResults={this.state.manipulated.length}
      paginate={this.paginate} /> : null;
     let sorting = this.sorting ? <Sort sortByTitle={this.sortByTitle} sortByDate={this.sortByDate} /> : null;
-
+    let activePhotoUrl = this.state.manipulated.length > 0 ? this.state.manipulated[this.state.currentPhoto].url :
+      this.state.feed[0].url
 
     return (
       <div style={{display: 'flex', flexWrap: 'wrap'}}>
@@ -174,7 +175,7 @@ class MyGallery extends Component {
           handlePhotoClick={this.handleOpenModal}
         />
         <ActivePhoto
-          url={this.state.manipulated[this.state.currentPhoto].url}
+          url={activePhotoUrl}
           toOpen={this.state.isModalOpen}
           toClose={this.handleCloseModal}
           handleNext={this.handleNextButton}
